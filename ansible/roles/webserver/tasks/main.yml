@@ -1,0 +1,20 @@
+- name: Install Node.js
+  yum:
+    name: nodejs
+    state: present
+
+- name: Install Nginx
+  yum:
+    name: nginx
+    state: present
+
+- name: Enable and start Nginx
+  service:
+    name: nginx
+    state: started
+    enabled: yes
+
+- name: Clone app repo
+  git:
+    repo: https://github.com/sample-repo/your-node-app.git
+    dest: /home/ec2-user/app
